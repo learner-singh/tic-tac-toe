@@ -1,0 +1,120 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #9193a8;
+}
+
+#container {
+    margin: 0px auto;
+    width: 80%;
+    text-align: center;
+}
+
+h1 {
+    padding: 5px;
+    color: #fff;
+    font-size: 50px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.row div {
+    /* width: 40%; */
+    text-align: center;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    width: 100%;
+    margin: 0px 5px;
+    height: 40px;
+    padding: 5px;
+}
+
+.row div:hover{
+    background-color: grey;
+    color: white;
+}
+
+a {
+    color: #000;
+}
+
+.row div:hover a {
+    color: #fff;
+}
+
+#home, #computer, #friends {
+    display: none;
+    position: relative;
+}
+
+#home:target, #computer:target, #friends:target {
+    display: block;
+}
+
+.note, .noteC {
+    padding: 20px;
+   text-align: left;
+   color: blue;
+}
+
+table {
+    background-color: blue;
+    margin: 10px auto;
+    /* display: inline-block; */
+}
+
+.btn, .btnC {
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+    font-size: 40px;
+}
+
+.btn:hover, .btnC:hover {
+    background-color: aqua;
+}
+
+#reset, #resetC {
+    height: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: yellowgreen;
+    color: blueviolet;
+}
+
+#reset:hover, #resetC:hover {
+    color: yellowgreen;
+    background-color: blueviolet;
+}
+
+#message, #messageC{
+    position: absolute;
+    bottom: 400px;
+    right: 50px;
+}
+
+
+#computer #xOrZero {
+    margin-top: 10px;
+    margin-left: 30px;
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    color: blue;
+}
+
+#select-message {
+    font-size: 16px;
+    padding-top: 15px;
+}

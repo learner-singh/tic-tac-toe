@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <script src="./scripts/logic.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Tic Tac Toe</h1>
+        <div class="row">
+            <div>
+                <a href="#">Home &#127968</a>
+            </div>
+            <div id="play-with-computer">
+                <a href="#computer">Play with Computer &#128421;</a>
+            </div>
+            <div id="play-with-friends">
+                <a href="#friends" id="play-with-friends">Play with Friends &#128113;</a>
+            </div>
+        </div>
+
+        <div id="home">
+            <div id="cube">
+                <div id="top">Top</div>
+                <div id="bottom">Bottom</div>
+                <div id="front">Front</div>
+                <div id="back">Back</div>
+                <div id="left">Left</div>
+                <div id="right">Right</div>
+            </div>
+        </div>
+
+        <div id="computer">
+            <div class="noteC">
+                <div id="select">
+                    <form action="#">
+                        <label for="xOrZero"><h3>Select X or 0 &#128071;</h3></label>
+                        <select name="xOrZero" id="xOrZero">
+                            <option value="X">X</option>
+                            <option value="0">0</option>
+                        </select>
+                    </form>                  
+                </div>
+                <div id="select-message">
+                    By default You are X & Computer is 0
+                </div>
+            </div> 
+            
+            <table>
+                <tr>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                </tr>
+                <tr>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                </tr>
+                <tr>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                    <td><button class="btnC"></button></td>
+                </tr>
+            </table>
+            <button id="resetC">Reset Game</button>
+            <h2 id="messageC"></h2>
+        </div>
+
+        <div id="friends">
+            <div class="note">
+                <h3>Note: Player 1 is <span>X</span> & Player 2 is <span>0</span></h3>
+                <p>Player 1 click to start..&#128071;</p>
+            </div>
+            
+
+            <table>
+                <tr>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                    <td><button class="btn"></button></td>
+                </tr>
+            </table>
+            <button id="reset">Reset Game</button>
+            <h2 class="message" id="message"></h2>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
