@@ -118,3 +118,84 @@ table {
     font-size: 16px;
     padding-top: 15px;
 }
+
+
+#home #cube {
+    height: 200px;
+    width: 200px;
+    margin: 160px auto;
+    /* perspective: 200px; */
+    animation: cube 5s infinite linear;
+    transform-style: preserve-3d;
+}
+
+
+#home #cube div {
+    height: inherit;
+    width: inherit;
+    border: 2px solid blanchedalmond;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: blanchedalmond;
+    font-size: 80px;
+    position: absolute;
+    line-height: 200px;
+}
+
+#home #cube #left {
+    transform: rotateY(90deg);
+    transform-origin: left;
+}
+
+#home #cube #right {
+    transform: rotateY(-90deg);
+    transform-origin: right;
+}
+
+#home #cube #top {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+}
+
+#home #cube #bottom {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+}
+
+#home #cube #back {
+    transform: translateZ(-200px);
+}
+
+#home #cube #front {
+    z-index: 1;
+}
+
+
+@keyframes cube {
+    0% {
+        transform: rotate3d(0,0,0,0deg);
+    }
+    100% {
+        transform: rotate3d(1,1,1,360deg);
+    }
+}
+
+
+
+@media(max-width: 576px) {
+    #container {
+        width: 100%;
+        text-align: center;
+    }
+    .row {
+        display: block;
+
+    }
+    .row div {
+
+        width: 70%;
+        margin: 10px auto;
+    }
+    #message, #messageC {
+        position: static;
+    }
+}

@@ -6,14 +6,14 @@ window.addEventListener('load', bindEvents);
 
 function bindEvents() {
     document.getElementById('play-with-computer')
-    .addEventListener('click', playWithComputer);
+        .addEventListener('click', playWithComputer);
 
     document.getElementById('play-with-friends')
-    .addEventListener('click', playWithFriends);
-    
+        .addEventListener('click', playWithFriends);
+
 }
 
-let buttons= null;
+let buttons = null;
 let buttonsC;
 
 let flag;
@@ -21,6 +21,8 @@ let clickCount = 0;
 let message = "";
 let isGameFinished = false;
 let reset;
+
+let move=true;
 
 function playWithComputer() {
     // resetGame();
@@ -36,19 +38,52 @@ function playWithComputer() {
 function selectedXOrZero() {
     const selected = document.getElementById('xOrZero').value;
     console.log('Selected value is', selected)
-    if(selected == 'X') {
+    if (selected == 'X') {
         flag = true;
     }
-    else{
+    else {
         flag = false;
     }
     document.getElementById('select-message')
-        .innerText = 'You have Selected ' + (flag ? "X" : "0") + ' & Computer is ' +(!flag ? "X" : "0");
-        buttons = document.querySelectorAll('.btnC');
-          for(let btn of buttons){
+        .innerText = 'You have Selected ' + (flag ? "X" : "0") + ' & Computer is ' + (!flag ? "X" : "0");
+    buttons = document.querySelectorAll('.btnC');
+        for (let btn of buttons) {
+            // btn.addEventListener('click', printXOrZero);
             btn.addEventListener('click', printXOrZero);
-            
+            // computersMove();
         }
+    
+}
+
+// function playersMove() {
+//     printXOrZero();
+
+// }
+
+function computersMove () {
+    let emptyBtns = [];
+    let random;
+    for(let btn of buttons) {
+        if(btn.innerText == '') {
+            emptyBtns.push(btn);
+        }
+    }
+    console.log('empty buttons are',emptyBtns);
+    clickCount++;
+    random = Math.floor(Math.random()*emptyBtns.length);
+    console.log('random = ',random, emptyBtns[random])
+    
+    emptyBtns[random].innerText = flag ? "X" : "0";
+    emptyBtns[random].style.backgroundColor = flag ? "red" : "green";
+    if (clickCount >= 5) {
+        if (isGameOver()) {
+            isGameFinished = true;
+            message = "Game Over " + (flag ? "X" : "0") + " Wins";
+            printMessage();
+        }
+        isDraw();
+    }
+    flag = !flag;
 }
 
 function playWithFriends() {
@@ -70,16 +105,19 @@ function printXOrZero() {
     if ((!isGameFinished) && currentButton.innerText.length == 0) {
         clickCount++;
         currentButton.innerText = flag ? "X" : "0";
-        currentButton.style.backgroundColor = flag? "red" : "green";
+        currentButton.style.backgroundColor = flag ? "red" : "green";
         if (clickCount >= 5) {
             if (isGameOver()) {
                 isGameFinished = true;
                 message = "Game Over " + (flag ? "X" : "0") + " Wins";
                 printMessage();
             }
-        isDraw();
+            isDraw();
         }
         flag = !flag;
+    }
+    if(!isGameFinished) {
+        computersMove();
     }
 }
 
@@ -87,8 +125,8 @@ const printMessage = () => {
     console.log("printmessag is called")
     // document.querySelectorAll('.message').style.color = flag? "red" : "green";
     // document.querySelectorAll(".message").innerText = message;
-    document.getElementById('message').style.color = flag? "red" : "green";
-    document.getElementById('messageC').style.color = flag? "red" : "green";
+    document.getElementById('message').style.color = flag ? "red" : "green";
+    document.getElementById('messageC').style.color = flag ? "red" : "green";
     document.getElementById('message').innerText = message;
     document.getElementById('messageC').innerText = message;
 
@@ -117,7 +155,7 @@ function isThreeSame(one, two, three) {
 const isNotBlank = (currentButton) => currentButton.innerText.length > 0;
 
 function isDraw() {
-    if(clickCount == 9) {
+    if (clickCount == 9) {
         message = "Game Draw";
         printMessage();
         console.log('message is ', message)
@@ -130,12 +168,12 @@ function resetGame() {
     clickCount = 0;
     message = "";
     isGameFinished = false;
-    for( let btn of buttons) {
+    for (let btn of buttons) {
         btn.innerText = "";
         btn.style.backgroundColor = "aquamarine";
     }
     document.getElementById('xOrZero').value = 'X';
     document.getElementById('select-message').innerText = 'By default You are X & Computer is 0';
     printMessage();
-    
+
 }
