@@ -27,9 +27,12 @@ let move=true;
 let isPlayinWithComputer;
 
 function playWithComputer() {
-    // resetGame();
+    resetGame();
     // document.getElementById('xOrZero').addEventListener('select', selectedXOrZero);
     isPlayinWithComputer = true;
+    document.getElementById('message').innerText = "";
+    document.getElementById('messageC').innerText = "";
+
     document.getElementById('xOrZero').addEventListener('change', selectedXOrZero);
     // console.log('playwithcomputer called')
 
@@ -39,6 +42,8 @@ function playWithComputer() {
 
 
 function selectedXOrZero() {
+    // resetGame();
+    document.getElementById('xOrZero').disabled = true;
     const selected = document.getElementById('xOrZero').value;
     console.log('Selected value is', selected)
     if (selected == 'X') {
@@ -90,9 +95,12 @@ function computersMove () {
 }
 
 function playWithFriends() {
-    // resetGame();
+    resetGame();
     flag = true;
     isPlayinWithComputer = false;
+    document.getElementById('message').innerText = "";
+    document.getElementById('messageC').innerText = "";
+
     buttons = document.querySelectorAll(".btn");
     for (let btn of buttons) {
         btn.addEventListener('click', printXOrZero);
@@ -171,10 +179,13 @@ function resetGame() {
     clickCount = 0;
     message = "";
     isGameFinished = false;
-    for (let btn of buttons) {
-        btn.innerText = "";
-        btn.style.backgroundColor = "aquamarine";
-    }
+    if(buttons != null){
+        for (let btn of buttons) {
+            btn.innerText = "";
+            btn.style.backgroundColor = "aquamarine";
+        }
+    }    
+    document.getElementById('xOrZero').disabled = false;
     document.getElementById('xOrZero').value = 'X';
     document.getElementById('select-message').innerText = 'By default You are X & Computer is 0';
     printMessage();
