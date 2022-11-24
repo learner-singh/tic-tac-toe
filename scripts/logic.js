@@ -22,11 +22,14 @@ let message = "";
 let isGameFinished = false;
 let reset;
 
+
 let move=true;
+let isPlayinWithComputer;
 
 function playWithComputer() {
     // resetGame();
     // document.getElementById('xOrZero').addEventListener('select', selectedXOrZero);
+    isPlayinWithComputer = true;
     document.getElementById('xOrZero').addEventListener('change', selectedXOrZero);
     // console.log('playwithcomputer called')
 
@@ -89,7 +92,7 @@ function computersMove () {
 function playWithFriends() {
     // resetGame();
     flag = true;
-
+    isPlayinWithComputer = false;
     buttons = document.querySelectorAll(".btn");
     for (let btn of buttons) {
         btn.addEventListener('click', printXOrZero);
@@ -116,7 +119,7 @@ function printXOrZero() {
         }
         flag = !flag;
     }
-    if(!isGameFinished) {
+    if(!isGameFinished && isPlayinWithComputer) {
         computersMove();
     }
 }
